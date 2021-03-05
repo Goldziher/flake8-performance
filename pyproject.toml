@@ -1,0 +1,82 @@
+[tool.poetry]
+name = "flake8-performance"
+version = "0.1.0"
+description = "A flake8 plugin to detect and resolve performance issues"
+authors = []
+maintainers = ["Na'aman Hirschfeld <nhirschfeld@gmail.com>", "Sondre Lillebø Gundersen <sondrelg@live.no>"]
+license = "MIT"
+readme = "README.md"
+homepage = "https://github.com/Goldziher/flake8-performance"
+repository = "https://github.com/Goldziher/flake8-performance"
+documentation = "https://github.com/Goldziher/flake8-performance"
+keywords = ["flake8", "plugin", "performance", "python", "optimization", "linting"]
+include = ["CHANGELOG.md"]
+packages = [
+    { include = "flake8_performance" },
+]
+classifiers = [
+    "Development Status :: 2 - Pre-Alpha",
+    "Framework :: Flake8",
+    "Intended Audience :: Developers",
+    "License :: OSI Approved :: MIT License",
+    "Natural Language :: English",
+    "Operating System :: OS Independent",
+    "Programming Language :: Python",
+    "Programming Language :: Python :: 3.9",
+    "Programming Language :: Python :: 3.10",
+    "Topic :: Software Development",
+    "Topic :: Software Development :: Libraries",
+    "Topic :: Software Development :: Libraries :: Application Frameworks",
+    "Topic :: Software Development :: Libraries :: Python Modules",
+    "Topic :: Utilities",
+    "Typing :: Typed",
+]
+
+[build-system]
+requires = ["poetry-core>=1.0.0"]
+build-backend = "poetry.core.masonry.api"
+
+[tool.poetry.dependencies]
+python = "^3.9"
+
+[tool.poetry.dev-dependencies]
+pytest = "^6.2.2"
+pytest-cov = "^2.11.1"
+pre-commit = "^2.10.1"
+pylint = "^2.7.2"
+
+[tool.black]
+line-length = 120
+include = '\.pyi?$'
+
+[tool.isort]
+profile = "black"
+multi_line_output = 3
+include_trailing_comma = true
+line_length = 120
+known_first_party = ["flake8_performance"]
+known_third_party = []
+
+[tool.pylint.FORMAT]
+max-line-length = 120
+
+[tool.pylint.MESSAGE_CONTROL]
+disable = """
+    unsubscriptable-object,
+    unnecessary-pass,
+    import-outside-toplevel,
+    fixme,
+    line-too-long,
+"""
+enable = "useless-suppression"
+
+[tool.pylint.BASIC]
+good-names = "_,e"
+
+[tool.coverage.run]
+source = ["flake8_performance/*"]
+branch = true
+
+[tool.coverage.report]
+show_missing = true
+skip_covered = true
