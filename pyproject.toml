@@ -32,6 +32,10 @@ classifiers = [
     "Typing :: Typed",
 ]
 
+[tool.poetry.plugins]
+[tool.poetry.plugins."flake8.extension"]
+PER = "flake8_performance:Plugin"
+
 [build-system]
 requires = ["poetry-core>=1.0.0"]
 build-backend = "poetry.core.masonry.api"
@@ -44,6 +48,7 @@ pytest = "^6.2.2"
 pytest-cov = "^2.11.1"
 pre-commit = "^2.10.1"
 pylint = "^2.7.2"
+flake8 = "^3.8.4"
 
 [tool.black]
 line-length = 120
